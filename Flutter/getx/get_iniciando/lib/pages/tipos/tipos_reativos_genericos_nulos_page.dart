@@ -6,6 +6,13 @@ class TiposReativosGenericosNulosPage extends StatelessWidget {
   final nome = Rxn<String>('Alex');
   final idade = Rxn<int>(24);
 
+  //OUTRA FORMA DE INICIALIZAR
+
+  //final rxnbool = Rxn<bool>(null);
+  //final rxnString = Rxn<String>(null);
+  //final rxnInt = Rxn<int>(null);
+  //final rxnDouble = Rxn<double>(null);
+
   final lista = Rxn<List<String>>(['Alex', 'João', 'Maria']);
   final mapa = Rxn<Map<String, dynamic>>({
     'nome': 'Alex',
