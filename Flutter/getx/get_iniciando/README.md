@@ -100,6 +100,35 @@ RxnString name = RxnString(null);
 
 ```
 
+Para acessar o valor da variável reativa, basta utilizar o método <b>value</b>:
+
+```dart
+Text(name.value),
+```
+#### Extensions
+
+Para facilitar o uso das variáveis reativas, o Getx disponibiliza as extensions, que permitem definir o tipo da variável reativa diretamente na declaração:
+
+```dart
+// tipos de variáveis reativas
+final name = ''.obs;
+final age = 0.obs;
+final height = 0.0.obs;
+final isLogged = false.obs;
+final list = <String>[].obs;
+
+// reatividade de qualquer tipo. Ex: classe Pessoa
+final pessoa = Pessoa().obs;
+```
+
+#### Observando as mudanças de valor
+
+Para observar as mudanças de valor de uma variável reativa, basta utilizar o widget <b>Obx</b>:
+
+```dart
+Obx(() => Text(name.value)),
+```
+
 
 
 

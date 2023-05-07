@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_iniciando/home_page.dart';
 import 'package:get_iniciando/pages/basico/reatividade_page.dart';
 import 'package:get_iniciando/pages/page_not_found_page.dart';
+import 'package:get_iniciando/pages/tipos/tipos_obs_page.dart';
 import 'package:get_iniciando/pages/tipos/tipos_reativos_genericos_page.dart';
 import 'package:get_iniciando/pages/tipos/tipos_reativos_genericos_nulos_page.dart';
 import 'package:get_iniciando/pages/tipos/tipos_reativos_page.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: '/tipos/reativos_genericos_nulos',
             page: () => TiposReativosGenericosNulosPage()),
+        GetPage(name: '/tipos/obs', page: () => TiposObsPage()),
       ],
     );
   }
