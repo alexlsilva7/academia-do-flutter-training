@@ -129,6 +129,35 @@ Para observar as mudanças de valor de uma variável reativa, basta utilizar o w
 Obx(() => Text(name.value)),
 ```
 
+#### Atualizando o valor da variável reativa
+
+Para atualizar o valor de uma variável reativa pode-se utilizar:
+- o método <b>value</b>:
+
+```dart
+//alterando o valor da variável reativa, que notificará os widgets que estão observando
+name.value = 'Hello World';
+```
+
+- o método <b>update</b>:
+
+```dart
+//alterando o valor da variável reativa, que notificará os widgets que estão observando
+name.update((value) => value = 'Hello World');
+```
+
+- atualizar atributos de classes com copyWith:
+
+```dart
+alunoModel.update((aluno) => aluno.copyWith(name: 'Felipe'));
+```
+
+- atualizar atributos de classes com refresh:
+
+```dart
+alunoModel.value.name = 'Felipe';
+alunoModel.refresh();
+```
 
 
 

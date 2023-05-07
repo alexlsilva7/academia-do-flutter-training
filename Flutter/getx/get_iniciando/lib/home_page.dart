@@ -44,6 +44,12 @@ class HomePage extends StatelessWidget {
               },
               child: const Text('Tipos OBS'),
             ),
+            TextButton(
+              onPressed: () {
+                Get.toNamed('/atualizacao/objetos');
+              },
+              child: const Text('Atualização Objetos'),
+            ),
           ],
         ),
       ),
