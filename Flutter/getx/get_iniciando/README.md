@@ -193,6 +193,21 @@ setState(() {});
 - Variáveis reativas não devem ser publicas, para alterar o valor de uma variável reativa, deve-se utilizar métodos públicos.
 
 
+#### Alternativa ao Obx
+
+O GetX disponibiliza o widget <b>GetX</b>, que é uma alternativa ao Obx, que permite definir o controller que será utilizado:
+
+
+```dart
+GetX<HomeController>(
+  init: HomeController(),
+  builder: (_) {
+    return Text(_.name.value);
+  },
+),
+```
+
+
 
 
 
