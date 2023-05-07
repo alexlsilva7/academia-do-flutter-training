@@ -159,6 +159,40 @@ alunoModel.value.name = 'Felipe';
 alunoModel.refresh();
 ```
 
+#### Controllers
+
+Controllers são classes que gerenciam o estado de uma tela ou de um widget.
+
+Para criar um controller, basta utilizar a classe <b>GetxController</b>:
+
+```dart
+class HomeController extends GetxController {}
+```
+
+Adicionar o controller no widget que será gerenciado através dos bindings, ou seja, o controller será destruído quando o widget for destruído:
+
+```dart
+GetPage(
+  name: '/home',
+  page: () => Home(),
+  binding: BindingsBuilder(() => Get.put(HomeController())),
+),
+```
+
+#### Recarregando o controller
+
+Quando o controller é injetado com lazyPut, podemos recarregar o controller para que ele seja reconstruído:
+
+```dart
+Get.reload<HomeController>();
+setState(() {});
+```
+
+<b>Boas práticas:</b> 
+- O ciclo de vida do controller pode ser diferente do ciclo de vida do widget, então não utilizar o onInit e onClose para inicializar e finalizar variáveis do flutter, como por exemplo, TextEditingControllers, GlobalKey, AnimationController, etc.
+- Variáveis reativas não devem ser publicas, para alterar o valor de uma variável reativa, deve-se utilizar métodos públicos.
+
+
 
 
 

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_iniciando/controllers/controllers_home_page.dart';
+import 'package:get_iniciando/controllers/getx_controller_example/controller.dart';
+import 'package:get_iniciando/controllers/getx_controller_example/getx_controller_example_page.dart';
 import 'package:get_iniciando/home_page.dart';
 import 'package:get_iniciando/pages/atualizacao/atualizacao_objetos_page.dart';
 import 'package:get_iniciando/pages/basico/reatividade_page.dart';
@@ -49,6 +52,19 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/tipos/obs', page: () => TiposObsPage()),
         GetPage(
             name: '/atualizacao/objetos', page: () => AtualizacaoObjetosPage()),
+        GetPage(
+          name: '/controllers',
+          page: () => const ControllersHomePage(),
+          children: [
+            GetPage(
+              name: '/getx_controller_example',
+              page: () => const GetxControllerExamplePage(),
+              binding: BindingsBuilder(() {
+                Get.lazyPut(() => Controller());
+              }),
+            ),
+          ],
+        ),
       ],
     );
   }

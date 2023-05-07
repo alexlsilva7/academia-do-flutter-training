@@ -50,6 +50,12 @@ class HomePage extends StatelessWidget {
               },
               child: const Text('Atualização Objetos'),
             ),
+            TextButton(
+              onPressed: () {
+                Get.toNamed('/controllers');
+              },
+              child: const Text('Controllers'),
+            ),
           ],
         ),
       ),
