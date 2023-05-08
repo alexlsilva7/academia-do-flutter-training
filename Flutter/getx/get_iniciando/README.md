@@ -338,8 +338,49 @@ Para evitar que isso aconteça, podemos utilizar o método <b>firstRebuild</b>:
 ```dart
 name.firstRebuild = false;
 ```
+#### GetBuilder
 
+Podemos alterar o estado de uma variavel que não é reativa, no estilo do setState e change notifier, utilizando o widget <b>GetBuilder</b>:
 
+```dart
+
+class HomeController extends GetxController {
+  var count = 0;
+
+  void increment() {
+    count++;
+    update();
+  }
+}
+
+//alterando o valor da variável reativa, que notificará os widgets que estão observando
+GetBuilder<HomeController>(
+  init: HomeController(),
+  builder: (_) {
+    return Text('${_.count}');
+  },
+),
+```
+Podendo também atualizar apenas uma parte do widget, utilizando o id:
+
+```dart
+class HomeController extends GetxController {
+  var count = 0;
+
+  void increment() {
+    count++;
+    update(['text']);
+  }
+}
+
+GetBuilder<HomeController>(
+  init: HomeController(),
+  id: 'text',
+  builder: (_) {
+    return Text('${_.count}');
+  },
+),
+```
 
 
 
