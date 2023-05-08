@@ -329,6 +329,15 @@ void onClose() {
 }
 ```
 
+#### FirstRebuild
+
+Na primeira vez que uma variavel reativa for alterada, mesmo que o valor seja o mesmo, o GetX irá notificar os widgets que estão observando a variável reativa.
+
+Para evitar que isso aconteça, podemos utilizar o método <b>firstRebuild</b>:
+
+```dart
+name.firstRebuild = false;
+```
 
 
 
