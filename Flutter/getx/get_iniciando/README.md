@@ -206,8 +206,46 @@ GetX<HomeController>(
   },
 ),
 ```
+#### Variaveis de estado local
 
+//ValueBuilder
 
+Para criar uma variável de estado local, basta utilizar o widget <b>ValueBuilder</b>:
+
+```dart
+ValueBuilder<bool>(
+  initialValue: true,
+  builder: (value, updater) {
+    return TextFormField(
+      obscureText: value,
+      decoration: InputDecoration(
+        labelText: 'Senha',
+        suffixIcon: IconButton(
+          icon: Icon(Icons.visibility),
+          onPressed: () => updater(!value),
+        ),
+      ),
+    );
+  },
+),
+```
+Existe também o widget <b>ObxValue</b>, que permite definir uma variavel observável local:
+
+```dart
+ObxValue<RxBool>(
+  (value) => TextFormField(
+    obscureText: value.value,
+    decoration: InputDecoration(
+      labelText: 'Senha',
+      suffixIcon: IconButton(
+        icon: Icon(Icons.visibility),
+        onPressed: () => value.toggle(),
+      ),
+    ),
+  ),
+  true.obs,
+),
+```
 
 
 
