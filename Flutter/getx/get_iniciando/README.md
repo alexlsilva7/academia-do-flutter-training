@@ -247,6 +247,87 @@ ObxValue<RxBool>(
 ),
 ```
 
+#### Workers
+
+Workers do getx ssão mecanismos para executar tarefas sempre que uma variável reativa for alterada.
+
+Temos 4 tipos de workers:
+
+- <b>ever</b>: executa uma tarefa sempre que uma variável reativa for alterada:
+
+```dart
+ever(
+  name,
+  (_) {
+    print('ever');
+  }, 
+  condition: name.isNotNull, 
+  cancelOnError: false,
+  onError: (error) => print(error),
+  );
+```
+- <b>once</b>: executa uma tarefa apenas uma vez quando uma variável reativa for alterada:
+
+```dart
+once<String>(
+  name,
+  (_) {
+    print('once');
+  }, 
+  condition: name.isNotNull, 
+  onError: (error) => print(error),
+  );
+```
+- <b>interval</b>: executa uma tarefa, e ignora as chamadas por um determinado tempo, até que o tempo seja finalizado:
+
+```dart
+interval(
+  Duration(seconds: 3),
+  (_) {
+    print('interval');
+  }, 
+  onError: (error) => print(error),
+  );
+```
+
+- <b>debounce</b>: executa uma tarefa quando ele para de receber chamadas por um determinado tempo, muito utilizado para pesquisas no backend quando o usuário para de digitar:
+
+```dart
+debounce(
+  name,
+  (_) {
+    print('debounce');
+  }, 
+  time: Duration(milliseconds: 800),
+  onError: (error) => print(error),
+  );
+```
+
+Adicionar os workers no onInit do controller:
+
+```dart
+final workers = <Worker>[];
+@override
+void onInit() {
+  super.onInit();
+  workers.addAll([
+    ever(...),
+    once<String>(...),
+    interval(...),
+    debounce(...),
+  ]);
+}
+```
+
+Depois de adicionar os workers no onInit do controller, é necessário remover os workers no onClose do controller:
+
+```dart
+@override
+void onClose() {
+  workers.forEach((worker) => worker.dispose());
+  super.onClose();
+}
+```
 
 
 
